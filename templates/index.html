@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block titulo%}Clientes{%endblock titulo%}</title>
+</head>
+<!--Main Navigation-->
+{%block nav%}<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="../">Libreria Luna </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Clientes</a>
+          <div class="dropdown-menu" >
+            <a class="dropdown-item" href="../">Ver Clientes</a>
+            <a class="dropdown-item" href="../crearCliente">Agregar</a>
+          </div>
+        </li>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Compras</a>
+              <div class="dropdown-menu" >
+                <a class="dropdown-item" href="../inicioProductos">Entradas</a>
+                <a class="dropdown-item" href="../crearCompra">Agregar Compra</a>
+                <a class="dropdown-item" href="../crearCategoria">Agregar Categoria</a>
+              </div>
+            </li>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ventas</a>
+              <div class="dropdown-menu" >
+                <a class="dropdown-item" href="vistaVentas">Salidas</a>
+                <a class="dropdown-item" href="../generaVenta">Generar Venta</a>
+              </div>
+            </li>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Facturación</a>
+              <div class="dropdown-menu" >
+                <a class="dropdown-item" href="../vistafact">Facturas</a>
+              </div>
+            </li>
+            
+
+
+</nav><br>{%endblock nav%}
+
+
+<body>
+    {%block cuerpo%}
+    <div class="row">
+        <div class="col-md-12 center-block">
+            <p class="text-primary"> Registro de Clientes</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Operación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{cliente.id_cliente}}</td>
+                        <td>{{cliente.nombre_cliente}}</td>
+                        <td>{{cliente.apellido_cliente}}</td>
+                        <td>{{cliente.direccion_cliente}}</td>
+                        <td>{{cliente.telefono_cliente}}</td>
+                        <td><a href="{% url 'editarcliente' cliente.id_cliente %}">Modificar</a>  <a href="{% url 'eliminar' cliente.id_cliente %}">Eliminar</a></td>
+                       
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {%endblock cuerpo%}
+</body>
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

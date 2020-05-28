@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{%block titulo%}Clientes{%endblock titulo%}</title>
+</head>
+<!--Main Navigation-->
+{%block nav%}<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="../">Libreria Luna </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <ul class="nav nav-pills">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">Clientes</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="../">Ver Clientes</a>
+        <a class="dropdown-item" href="../crearCliente">Agregar</a>
+      </div>
+    </li>
+    <ul class="nav nav-pills">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+          aria-expanded="false">Compras</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="../inicioProductos">Entradas</a>
+          <a class="dropdown-item" href="../crearCompra">Agregar Compra</a>
+          <a class="dropdown-item" href="../crearCategoria">Agregar Categoria</a>
+        </div>
+      </li>
+      <ul class="nav nav-pills">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">Ventas</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="../vistaVentas">Salidas</a>
+            <a class="dropdown-item" href="../generaVenta">Generar Venta</a>
+          </div>
+        </li>
+        <ul class="nav nav-pills">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+              aria-expanded="false">Facturación</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="../vistafact">Facturas</a>
+            </div>
+          </li>
+
+
+</nav><br>{%endblock nav%}
+
+<body>
+  {%block cuerpo%}
+ 
+    <div class="row invoice-info">
+      <div class="col-sm-4 invoice-col">
+        {% for venta_det in ventas %}
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">Cliente:{{venta_det.id_cliente_id}}</li>
+        </ol>
+        <b>Factura:</b>{{venta_det.id_venta}} <br/>
+        <b>Fecha de compra:</b> {{venta_det.fecha_venta}}<br/>
+        <b>Productos:</b> {{venta_det.id_producto_id}}<br/>
+        <b>Cantidad:</b> {{venta_det.cantidad}}<br/>
+        <b>Total:</b> Q{{venta_det.total}}<br/><br/>
+        {% endfor %} 
+      </div> 
+      
+      {%endblock cuerpo%}
+</body>
+
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>

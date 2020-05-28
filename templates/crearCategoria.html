@@ -1,0 +1,20 @@
+{% extends 'vistacompras.html' %}
+{%block titulo%}Crear Categoria{%endblock titulo%}
+{%block cuerpo%}
+<div class="row" style="text-align:left" >
+    <div class="col-md-4 center-block" >
+        <form method="POST" >
+            <fieldset>
+                <div class="form-group ">
+                    <div class="col-md-6">
+                        {% csrf_token%}
+                        {{form.as_p}}
+                   <button type="submit" class="btn btn-primary mb-6" >Crear / Modificar</button>
+                </div>
+               
+            </fieldset>
+            
+        </form>
+    </div>
+</div>
+{%endblock cuerpo%}
